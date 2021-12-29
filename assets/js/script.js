@@ -62,26 +62,31 @@ var generatePassword = function(){
   var numberLength = 10;
   var specialLength = 20;
 
-  for(let i = 1; i <= passwordLength; i++){
+  // for(let i = 1; i <= passwordLength; i++){
+  //   console.log(i);
+  // }
+
+  for(let i = 0; i < passwordLength; i++){
     console.log(i);
+    x = Math.floor(Math.random()*alphabetLength);
+    console.log(confirmLowerCase[x]);
   }
 
-  for(let i = 0; i < alphabetLength; i++){
-    console.log(confirmLowerCase[i]);
-  }
+  // for(let i = 0; i < alphabetLength; i++){
+  //   console.log(confirmUpperCase[i]);
+  // }
 
-  for(let i = 0; i < alphabetLength; i++){
-    console.log(confirmUpperCase[i]);
-  }
+  // for(let i = 0; i < numberLength; i++){
+  //   console.log(confirmNumeric[i]);
+  // }
 
-  for(let i = 0; i < numberLength; i++){
-    console.log(confirmNumeric[i]);
-  }
+  // for(let i = 0; i < specialLength; i++){
+  //   console.log(confirmSpecial[i]);
+  // }
 
-  for(let i = 0; i < specialLength; i++){
-    console.log(confirmSpecial[i]);
-  }
+  x = Math.floor(Math.random())*alphabetLength;
 
+  
 
 }
 
