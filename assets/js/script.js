@@ -13,10 +13,11 @@ var generatePassword = function(){
 
   console.log(passwordLength);
 
-  var confirmLowercase = window.confirm("Would you like to include lowercase characters?")
+  var confirmLowerCase = window.confirm("Would you like to include lowercase characters?")
 
-  if (confirmLowercase){
+  if (confirmLowerCase){
     window.alert("Password will include lowercase characters");
+    confirmLowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   }else {
     window.alert("Password will not include lowercase characters");
   }
@@ -25,6 +26,7 @@ var generatePassword = function(){
 
   if (confirmUpperCase){
     window.alert("Password will include uppercase characters");
+    confirmUpperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   }else {
     window.alert("Password will not include uppercase characters");
   }
@@ -33,6 +35,7 @@ var generatePassword = function(){
 
   if (confirmNumeric){
     window.alert("Password will include numeric characters");
+    confirmNumeric = ["0","1","2","3","4","5","6","7","8","9"];
   }else {
     window.alert("Password will not include numeric characters");
   }
@@ -41,6 +44,7 @@ var generatePassword = function(){
 
   if (confirmSpecial){
     window.alert("Password will include special characters");
+    confirmSpecial = ["@","%","+","/","!","#","$","^","?",":","(",")","}","{","[","]","`","-","_","."];
   } else {
     window.alert("Password will not include special characters");
   }
@@ -53,6 +57,32 @@ var generatePassword = function(){
   }
 
   console.log(confirmSpecial);
+
+  var alphabetLength = 26;
+  var numberLength = 10;
+  var specialLength = 20;
+
+  for(let i = 1; i <= passwordLength; i++){
+    console.log(i);
+  }
+
+  for(let i = 0; i < alphabetLength; i++){
+    console.log(confirmLowerCase[i]);
+  }
+
+  for(let i = 0; i < alphabetLength; i++){
+    console.log(confirmUpperCase[i]);
+  }
+
+  for(let i = 0; i < numberLength; i++){
+    console.log(confirmNumeric[i]);
+  }
+
+  for(let i = 0; i < specialLength; i++){
+    console.log(confirmSpecial[i]);
+  }
+
+
 }
 
 
