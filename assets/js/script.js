@@ -5,6 +5,9 @@ var charLowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
 var charUpperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var charNumeric = ["0","1","2","3","4","5","6","7","8","9"];
 var charSpecial = ["@","%","+","/","!","#","$","^","?",":","(",")","}","{","[","]","`","-","_","."];
+var alphabetLength = 26;
+var numberLength = 10;
+var specialLength = 20;
 
 var generatePassword = function(){
   //ask employee legnth of characters they want
@@ -79,64 +82,70 @@ var generatePassword = function(){
     generatePassword();
   }
 
-  var verifyChar = function(){
-    debugger;
-    // declare character variable and set it to a random value
-    var character = Math.random();
-    console.log(character);//to be deleted
+  for(let i = 0; i < passwordLength; i++){
+  console.log(i);
+  // x = Math.floor(Math.random()*alphabetLength);
+  // console.log(confirmLowerCase[x]);  
+    var verifyChar = function(){
+      debugger;
+      // declare character variable and set it to a random value
+      var character = Math.random();
+      console.log(character);//to be deleted
 
-    if (character > 0.75){
-      var characterChoice = confirmLowerCase;
-      debugger;
-      if (charLowerCase === characterChoice){
-        console.log(charLowerCase);
-        return;
-      } else {
-        verifyChar();
+      if (character > 0.75){
+        var characterChoice = confirmLowerCase;
+        debugger;
+        if (charLowerCase === characterChoice){
+          x = Math.floor(Math.random()*alphabetLength);
+          console.log(charLowerCase[x]);
+          return;
+        } else {
+          verifyChar();
+        }
+      } else if (character < 0.75 && character > 0.5){
+        characterChoice = confirmUpperCase;
+        debugger;
+        if (charUpperCase === characterChoice){
+          x = Math.floor(Math.random()*alphabetLength);
+          console.log(charUpperCase[x]);
+          return;
+        } else {
+          verifyChar();
+        }
+      } else if (character < 0.5 && character > 0.25){
+        characterChoice = confirmNumeric;
+        debugger;
+        if (charNumeric === characterChoice){
+          x = Math.floor(Math.random()*numberLength);
+          console.log(charNumeric[x]);
+          return;
+        } else {
+          verifyChar();
+        }
+      } else{
+        characterChoice = confirmSpecial;
+        debugger;
+        if (charSpecial === characterChoice){
+          x = Math.floor(Math.random()*specialLength);
+          console.log(charSpecial[x]);
+          return;
+        }else {
+          verifyChar();
+        }
       }
-    } else if (character < 0.75 && character > 0.5){
-      characterChoice = confirmUpperCase;
-      debugger;
-      if (charUpperCase === characterChoice){
-        console.log(charUpperCase);
-        return;
-      } else {
-        verifyChar();
-      }
-    } else if (character < 0.5 && character > 0.25){
-      characterChoice = confirmNumeric;
-      debugger;
-      if (charNumeric === characterChoice){
-        console.log(charNumeric);
-        return;
-      } else {
-        verifyChar();
-      }
-    } else{
-      characterChoice = confirmSpecial;
-      debugger;
-      if (charSpecial === characterChoice){
-        console.log(charSpecial);
-        return;
-      }else {
-        verifyChar();
-      }
+    // debugger;
+    // console.log(characterChoice);
     }
-  
-    console.log(characterChoice);
-  }
 
   debugger;
   verifyChar();
 
-  var alphabetLength = 26;
-  var numberLength = 10;
-  var specialLength = 20;
-
-  for(let i = 0; i < passwordLength; i++){
-    console.log(i);
-    x = Math.floor(Math.random()*alphabetLength);
-    console.log(confirmLowerCase[x]);
+  // for(let i = 0; i < passwordLength; i++){
+  //   console.log(i);
+  //   x = Math.floor(Math.random()*alphabetLength);
+  //   console.log(confirmLowerCase[x]);
+  //   debugger;
+  //   verifyChar();
   }
 }
 
@@ -148,6 +157,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  debugger;
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
