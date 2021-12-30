@@ -40,6 +40,8 @@ var generatePassword = function(){
     window.alert("Password will not include numeric characters");
   }
 
+  
+
   var confirmSpecial = window.confirm("Would you like to include special characters? Ex: @, #, $.")
 
   if (confirmSpecial){
