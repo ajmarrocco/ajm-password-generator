@@ -23,7 +23,7 @@ var generatePassword = function(){
   }
 
   // Print passwordLength in console
-  console.log(passwordLength); //to be deleted
+  // console.log(passwordLength); //to be deleted
 
   // Declare lowercase variable and ask user if they want lowercase characters in password
   var confirmLowerCase = window.confirm("Would you like to include lowercase characters?");
@@ -75,71 +75,93 @@ var generatePassword = function(){
 
   // ask user to confirm if they are content with the criteria
   var confirmCriteria = window.confirm("Are you satisfied with the criteria you selected?")
-  if (confirmCriteria){
+  if (confirmCriteria && (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial)){
     window.alert("Proceed");
   } else {
     // run generate password code again
+    window.alert("You have not selected any character types.  Please select again");
     generatePassword();
   }
+
+  var passw = [];
 
   for(let i = 0; i < passwordLength; i++){
   console.log(i);
   // x = Math.floor(Math.random()*alphabetLength);
   // console.log(confirmLowerCase[x]);  
     var verifyChar = function(){
-      debugger;
+      // debugger;
       // declare character variable and set it to a random value
       var character = Math.random();
-      console.log(character);//to be deleted
+      // console.log(character);//to be deleted
 
       if (character > 0.75){
-        var characterChoice = confirmLowerCase;
-        debugger;
+        characterChoice = confirmLowerCase;
+        // debugger;
         if (charLowerCase === characterChoice){
           x = Math.floor(Math.random()*alphabetLength);
-          console.log(charLowerCase[x]);
-          return;
+          // debugger;
+          var passChar = console.log(characterChoice[x]);
+          // return;
         } else {
           verifyChar();
         }
       } else if (character < 0.75 && character > 0.5){
         characterChoice = confirmUpperCase;
-        debugger;
+        // debugger;
         if (charUpperCase === characterChoice){
           x = Math.floor(Math.random()*alphabetLength);
-          console.log(charUpperCase[x]);
-          return;
+          // debugger;
+          passChar = console.log(characterChoice[x]);
+          // return;
         } else {
           verifyChar();
         }
       } else if (character < 0.5 && character > 0.25){
         characterChoice = confirmNumeric;
-        debugger;
+        // debugger;
         if (charNumeric === characterChoice){
           x = Math.floor(Math.random()*numberLength);
-          console.log(charNumeric[x]);
-          return;
+          // debugger;
+          passChar = console.log(characterChoice[x]);
+          // return;
         } else {
           verifyChar();
         }
       } else{
         characterChoice = confirmSpecial;
-        debugger;
+        // debugger;
         if (charSpecial === characterChoice){
           x = Math.floor(Math.random()*specialLength);
-          console.log(charSpecial[x]);
-          return;
+          passChar = console.log(characterChoice[x]); 
+          // return;
         }else {
           verifyChar();
         }
       }
+
+      
+
+
     // debugger;
     // console.log(characterChoice);
+    // console.log(passChar.join(''));
+    // console.log(passw.push(passChar));
     }
 
-  debugger;
+  // debugger;
   verifyChar();
 
+  //adds each choice to the array passw
+  passw.push(characterChoice[x]);
+  console.log(passw);  
+  // console.log(passw.join(''));
+  
+
+
+
+  // console.log([x]);
+ 
   // for(let i = 0; i < passwordLength; i++){
   //   console.log(i);
   //   x = Math.floor(Math.random()*alphabetLength);
@@ -147,6 +169,14 @@ var generatePassword = function(){
   //   debugger;
   //   verifyChar();
   }
+
+  //joins all the characters to a single string
+  var pas = passw.join('');
+  console.log(pas);  
+
+  window.alert("Retrieving your new password");
+  window.alert("Your new password is: " + pas);
+
 }
 
 
@@ -157,7 +187,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  debugger;
+  // debugger;
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
