@@ -86,7 +86,7 @@ var generatePassword = function(){
   var passw = [];
 
   for(let i = 0; i < passwordLength; i++){
-  console.log(i);
+  // console.log(i);
   // x = Math.floor(Math.random()*alphabetLength);
   // console.log(confirmLowerCase[x]);  
     var verifyChar = function(){
@@ -101,7 +101,7 @@ var generatePassword = function(){
         if (charLowerCase === characterChoice){
           x = Math.floor(Math.random()*alphabetLength);
           // debugger;
-          var passChar = console.log(characterChoice[x]);
+          // console.log(characterChoice[x]);
           // return;
         } else {
           verifyChar();
@@ -112,7 +112,7 @@ var generatePassword = function(){
         if (charUpperCase === characterChoice){
           x = Math.floor(Math.random()*alphabetLength);
           // debugger;
-          passChar = console.log(characterChoice[x]);
+          // console.log(characterChoice[x]);
           // return;
         } else {
           verifyChar();
@@ -123,7 +123,7 @@ var generatePassword = function(){
         if (charNumeric === characterChoice){
           x = Math.floor(Math.random()*numberLength);
           // debugger;
-          passChar = console.log(characterChoice[x]);
+          // passChar = console.log(characterChoice[x]);
           // return;
         } else {
           verifyChar();
@@ -133,7 +133,7 @@ var generatePassword = function(){
         // debugger;
         if (charSpecial === characterChoice){
           x = Math.floor(Math.random()*specialLength);
-          passChar = console.log(characterChoice[x]); 
+          // passChar = console.log(characterChoice[x]); 
           // return;
         }else {
           verifyChar();
@@ -154,7 +154,7 @@ var generatePassword = function(){
 
   //adds each choice to the array passw
   passw.push(characterChoice[x]);
-  console.log(passw);  
+  // console.log(passw);  
   // console.log(passw.join(''));
   
 
@@ -170,12 +170,19 @@ var generatePassword = function(){
   //   verifyChar();
   }
 
-  //joins all the characters to a single string
+  //joins all the characters of passw to a single string pas
   var pas = passw.join('');
-  console.log(pas);  
+  // console.log(pas);  
 
   window.alert("Retrieving your new password");
   window.alert("Your new password is: " + pas);
+
+  var charConfirmation = window.confirm("Are you satisfied with your password?");
+  if (charConfirmation){
+    window.alert("Thank you!")
+  } else{
+    generatePassword();
+  }
 
 }
 
