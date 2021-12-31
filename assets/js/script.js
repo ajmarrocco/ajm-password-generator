@@ -23,13 +23,13 @@ var generatePassword = function(){
   }
 
   // Declare lowercase variable and ask user if they want lowercase characters in password
-  debugger;
+  // debugger;
   var confirmLowerCase = window.confirm("Would you like to include lowercase characters?");
 
   if (confirmLowerCase){
     //if  user wants lowercase, set confirmLowerCase to array
     window.alert("Password will include lowercase characters");
-    confirmLowerCase = charLowerCase;
+    var charLC = charLowerCase;
   } else {
     // prompt user that there will be no lowercase characters
     window.alert("Password will not include lowercase characters");
@@ -41,7 +41,7 @@ var generatePassword = function(){
   if (confirmUpperCase){
     //if  user wants uppercase, set confirmUpperCase to array
     window.alert("Password will include uppercase characters");
-    confirmUpperCase = charUpperCase;
+    var charUC = charUpperCase;
   }else {
     // prompt user that there will be no uppercase characters
     window.alert("Password will not include uppercase characters");
@@ -53,7 +53,7 @@ var generatePassword = function(){
   if (confirmNumeric){
     //if  user wants numeric, set confirmNumeric to array
     window.alert("Password will include numeric characters");
-    confirmNumeric = charNumeric;
+    var charN = charNumeric;
   }else {
     // prompt user that there will be no numeric characters
     window.alert("Password will not include numeric characters");
@@ -65,7 +65,7 @@ var generatePassword = function(){
   if (confirmSpecial){
     //if  user wants special, set confirmNSpecial to array
     window.alert("Password will include special characters");
-    confirmSpecial = charSpecial;
+    var charS = charSpecial;
   } else {
     // prompt user that there will be no special characters
     window.alert("Password will not include special characters");
@@ -74,10 +74,10 @@ var generatePassword = function(){
   // ask user to confirm if they are content with the criteria
   var confirmCriteria = window.confirm("Are you satisfied with the criteria you selected?")
   if (!confirmCriteria){
-    // debugger;
+    // 
     window.alert("You are not satisfied with your crtieria.  Please select again");
     generatePassword();  
-  } else if (confirmLowerCase != charLowerCase && confirmUpperCase != charUpperCase && confirmNumeric != charNumeric && confirmSpecial != charSpecial) {
+  } else if (!confirmLowerCase && !confirmUpperCase && !confirmNumeric && !confirmSpecial) {
     window.alert("You have not selected any character types.  Please select again");
     generatePassword();
   } else {
@@ -96,28 +96,28 @@ var generatePassword = function(){
       // console.log(character);//to be deleted
 
       if (character > 0.75){
-        characterChoice = confirmLowerCase;
+        characterChoice = charLC;
         if (charLowerCase === characterChoice){
           x = Math.floor(Math.random()*alphabetLength);
         } else {
           verifyChar();
         }
       } else if (character < 0.75 && character > 0.5){
-        characterChoice = confirmUpperCase;
+        characterChoice = charUC;
         if (charUpperCase === characterChoice){
           x = Math.floor(Math.random()*alphabetLength);
         } else {
           verifyChar();
         }
       } else if (character < 0.5 && character > 0.25){
-        characterChoice = confirmNumeric;
+        characterChoice = charN;
         if (charNumeric === characterChoice){
           x = Math.floor(Math.random()*numberLength);
         } else {
           verifyChar();
         }
       } else{
-        characterChoice = confirmSpecial;
+        characterChoice = charS;
         if (charSpecial === characterChoice){
           x = Math.floor(Math.random()*specialLength);
         }else {
@@ -135,7 +135,7 @@ var generatePassword = function(){
   //joins all the characters of passw to a single string pas
   var pas = passw.join('');
 
-  debugger;
+  // debugger;
   window.alert("Your new password is: " + pas);
 
   var charConfirmation = window.confirm("Are you satisfied with your password?");
