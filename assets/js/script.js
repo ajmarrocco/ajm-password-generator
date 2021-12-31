@@ -80,7 +80,6 @@ var generatePassword = function(){
   
   if (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial){
     window.alert("Proceed");
-    return true;
   } else {
     window.alert("You're password does not meet criteria. Please select again");
     generatePassword();
