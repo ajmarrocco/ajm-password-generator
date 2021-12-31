@@ -78,7 +78,10 @@ var generatePassword = function(){
   // console.log(confirmCriteria);
   console.log(confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial);
   
-  if (confirmLowerCase === false && confirmUpperCase === false && confirmNumeric === false && confirmSpecial === false){
+  if (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial){
+    window.alert("Proceed");
+    return true;
+  } else {
     window.alert("You're password does not meet criteria. Please select again");
     generatePassword();
   }
@@ -91,14 +94,14 @@ var generatePassword = function(){
   //   window.alert("You're password does not meet criteria. Please select again");
   // } 
 
-  var passw = [0];
+  var passw = '';
 
-  for(let i = 0; i < passwordLength; i++){
-
-    // debugger;
-    var verifyChar = function(){
+  var verifyChar = function(){
+    
+    for(let i = 0; i < passwordLength; i++){
       
       // declare character variable and set it to a random value
+      // debugger;
       var character = Math.random();
       // console.log(character);//to be deleted
 
@@ -135,24 +138,20 @@ var generatePassword = function(){
           verifyChar();
         }
       }
+        //adds each choice to the array pass
+    debugger;
+    passw = passw + characterChoice[x];
+    console.log(passw);
     }
+    return passw;
+  }
 
   verifyChar();
 
-  //adds each choice to the array passw
-  
-  passw.push(characterChoice[x]);
-  console.log(passw);
-  }
-
-  passw.shift();
-  console.log(passw);
-
   //joins all the characters of passw to a single string pas
-  var pas = passw.join('');
-
+  
   // debugger;
-  window.alert("Your new password is: " + pas);
+  window.alert("Your new password is: " + passw);
 
   var charConfirmation = window.confirm("Are you satisfied with your password?");
   switch (charConfirmation){
@@ -160,9 +159,9 @@ var generatePassword = function(){
       window.alert("Thank you!")
       console.log(passwordLength);
       debugger;
-      console.log(pas);
+      console.log(passw);
       debugger;
-      // return pas;
+      return passw;
       break;
       debugger;    
     case false:
