@@ -13,10 +13,12 @@ var generatePassword = function(){
   //ask employee legnth of characters they want
   var passwordLength = window.prompt("Please select length of password.  Must be at least 8 characters and no more than 128 characters.  Please write the numerical value of the characters you want.  Ex: 15.");
 
+  passwordLength = parseInt(passwordLength);
+
   //validate answer is between 8 and 128 charcters
-  if (passwordLength >= 8 && passwordLength <= 128)
+  if (passwordLength >= 8 && passwordLength <= 128){
   window.alert("You have chosen " + passwordLength + " characters.  Proceed");
-  else{
+  } else {
     // if not prompt user and have them enter another value
     window.alert("The number of characters you entered is incorrect.  Please enter again");
     generatePassword();
@@ -29,7 +31,7 @@ var generatePassword = function(){
   if (confirmLowerCase){
     //if  user wants lowercase, set confirmLowerCase to array
     window.alert("Password will include lowercase characters");
-    var charLC = charLowerCase;
+    var confirmLowerCase = charLowerCase;
   } else {
     // prompt user that there will be no lowercase characters
     window.alert("Password will not include lowercase characters");
@@ -41,7 +43,7 @@ var generatePassword = function(){
   if (confirmUpperCase){
     //if  user wants uppercase, set confirmUpperCase to array
     window.alert("Password will include uppercase characters");
-    var charUC = charUpperCase;
+    var confirmUpperCase = charUpperCase;
   }else {
     // prompt user that there will be no uppercase characters
     window.alert("Password will not include uppercase characters");
@@ -53,7 +55,7 @@ var generatePassword = function(){
   if (confirmNumeric){
     //if  user wants numeric, set confirmNumeric to array
     window.alert("Password will include numeric characters");
-    var charN = charNumeric;
+    var confirmNumeric = charNumeric;
   }else {
     // prompt user that there will be no numeric characters
     window.alert("Password will not include numeric characters");
@@ -65,30 +67,35 @@ var generatePassword = function(){
   if (confirmSpecial){
     //if  user wants special, set confirmNSpecial to array
     window.alert("Password will include special characters");
-    var charS = charSpecial;
+    var confirmSpecial = charSpecial;
   } else {
     // prompt user that there will be no special characters
     window.alert("Password will not include special characters");
   }
 
   // ask user to confirm if they are content with the criteria
-  var confirmCriteria = window.confirm("Are you satisfied with the criteria you selected?")
-  if (!confirmCriteria){
-    // 
-    window.alert("You are not satisfied with your crtieria.  Please select again");
-    generatePassword();  
-  } else if (!confirmLowerCase && !confirmUpperCase && !confirmNumeric && !confirmSpecial) {
-    window.alert("You have not selected any character types.  Please select again");
+  // var confirmCriteria = window.confirm("Are you satisfied with the criteria you selected?")
+  // console.log(confirmCriteria);
+  console.log(confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial);
+  
+  if (confirmLowerCase === false && confirmUpperCase === false && confirmNumeric === false && confirmSpecial === false){
+    window.alert("You're password does not meet criteria. Please select again");
     generatePassword();
-  } else {
-    // proceed with code
-    window.alert("Proceed");
   }
+  // if (confirmCriteria && (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial)){
+  //   // 
+  //   debugger;
+  //   window.alert("Proceed");
+  // } else  {
+  //   debugger;
+  //   window.alert("You're password does not meet criteria. Please select again");
+  // } 
 
-  var passw = [];
+  var passw = [0];
 
   for(let i = 0; i < passwordLength; i++){
 
+    // debugger;
     var verifyChar = function(){
       
       // declare character variable and set it to a random value
@@ -96,31 +103,35 @@ var generatePassword = function(){
       // console.log(character);//to be deleted
 
       if (character > 0.75){
-        characterChoice = charLC;
+        characterChoice = confirmLowerCase;
         if (charLowerCase === characterChoice){
           x = Math.floor(Math.random()*alphabetLength);
         } else {
+          // debugger;
           verifyChar();
         }
       } else if (character < 0.75 && character > 0.5){
-        characterChoice = charUC;
+        characterChoice = confirmUpperCase;
         if (charUpperCase === characterChoice){
           x = Math.floor(Math.random()*alphabetLength);
         } else {
+          // debugger;
           verifyChar();
         }
       } else if (character < 0.5 && character > 0.25){
-        characterChoice = charN;
+        characterChoice = confirmNumeric;
         if (charNumeric === characterChoice){
           x = Math.floor(Math.random()*numberLength);
         } else {
+          // debugger;
           verifyChar();
         }
       } else{
-        characterChoice = charS;
+        characterChoice = confirmSpecial;
         if (charSpecial === characterChoice){
           x = Math.floor(Math.random()*specialLength);
         }else {
+          // debugger;
           verifyChar();
         }
       }
@@ -129,8 +140,13 @@ var generatePassword = function(){
   verifyChar();
 
   //adds each choice to the array passw
+  
   passw.push(characterChoice[x]);
+  console.log(passw);
   }
+
+  passw.shift();
+  console.log(passw);
 
   //joins all the characters of passw to a single string pas
   var pas = passw.join('');
@@ -139,16 +155,21 @@ var generatePassword = function(){
   window.alert("Your new password is: " + pas);
 
   var charConfirmation = window.confirm("Are you satisfied with your password?");
-  if (charConfirmation){
-    window.alert("Thank you!")
-    return pas;
-  } else{
-    generatePassword();
+  switch (charConfirmation){
+    case true: 
+      window.alert("Thank you!")
+      console.log(passwordLength);
+      debugger;
+      console.log(pas);
+      debugger;
+      // return pas;
+      break;
+      debugger;    
+    case false:
+      generatePassword();
+      break;
   }
-
 }
-
-
 
 
 // Get references to the #generate element
