@@ -9,6 +9,132 @@ var alphabetLength = 26;
 var numberLength = 10;
 var specialLength = 20;
 
+var lowercaseOrNo = function(){
+  var promptLowerCase = window.prompt('Would you like lowercase characters? Enter "YES" or "NO" to choose.');
+
+  debugger;
+  if (promptLowerCase === "" || promptLowerCase === null){
+    window.alert("You need to provide a valid answer! Please try again.");
+    // use return to call it again and stop the rest of this function from running
+    return lowercaseOrNo();
+  }
+
+  promptLowerCase = promptLowerCase.toLowerCase();
+
+  if (promptLowerCase === "yes"){
+    var confirmLowerCase =  window.confirm("Are you sure you'd lowercase characters?");
+
+    if (confirmLowerCase) {
+      return true;
+    } 
+  } else if (promptLowerCase === "no"){
+    var confirmLowerCase =  window.confirm("Are you sure you don't want lowercase characters?");
+
+    if (confirmLowerCase){
+      return false;
+    }
+  } else
+  window.alert("You need to provide a valid answer! Please try again.");
+  return lowercaseOrNo();
+}
+
+var uppercaseOrNo = function(){
+  var promptUpperCase = window.prompt('Would you like uppercase characters? Enter "YES" or "NO" to choose.');
+
+  if (promptUpperCase === "" || promptUpperCase === null){
+    window.alert("You need to provide a valid answer! Please try again.");
+    // use return to call it again and stop the rest of this function from running
+    return uppercaseOrNo();
+  }
+
+  promptUpperCase = promptUpperCase.toLowerCase();
+
+  if (promptUpperCase === "yes"){
+    var confirmUpperCase =  window.confirm("Are you sure you'd uppercase characters?");
+
+    if (confirmUpperCase) {
+      return true;
+    } 
+  } else if (promptUpperCase === "no"){
+    var confirmUpperCase =  window.confirm("Are you sure you don't want uppercase characters?");
+
+    if (confirmUpperCase){
+      return false;
+    }
+  } else
+  window.alert("You need to provide a valid answer! Please try again.");
+  return lowercaseOrNo();
+}
+
+
+var numericOrNo = function(){
+  var promptNumeric = window.prompt('Would you like numeric characters? Enter "YES" or "NO" to choose.');
+
+  if (promptNumeric === "" || promptNumeric === null){
+    window.alert("You need to provide a valid answer! Please try again.");
+    // use return to call it again and stop the rest of this function from running
+    return numericOrNo();
+  }
+
+  promptNumeric = promptNumeric.toLowerCase();
+
+  if (promptNumeric === "yes"){
+    var confirmNumeric =  window.confirm("Are you sure you'd numeric characters?");
+
+    if (confirmNumeric) {
+      return true;
+    } 
+  } else if (promptNumeric === "no"){
+    var confirmNumeric =  window.confirm("Are you sure you don't want numeric characters?");
+
+    if (confirmNumeric){
+      return false;
+    }
+  } else
+  window.alert("You need to provide a valid answer! Please try again.");
+  return numericOrNo();
+}
+
+var specialOrNo = function(){
+  var promptSpecial = window.prompt('Would you like special characters? Enter "YES" or "NO" to choose.');
+
+  if (promptSpecial === "" || promptSpecial === null){
+    window.alert("You need to provide a valid answer! Please try again.");
+    // use return to call it again and stop the rest of this function from running
+    return specialOrNo();
+  }
+
+  promptSpecial = promptSpecial.toLowerCase();
+
+  if (promptSpecial === "yes"){
+    var confirmSpecial =  window.confirm("Are you sure you'd special characters?");
+    debugger;
+
+    if (confirmSpecial) {
+      return true;
+    } 
+  } else if (promptSpecial === "no"){
+    var confirmSpecial =  window.confirm("Are you sure you don't want special characters?");
+
+    if (confirmSpecial){
+      return false;
+    }
+  } else
+  window.alert("You need to provide a valid answer! Please try again.");
+  return specialOrNo();
+}
+
+debugger;
+
+var criteriaOrNo = function() {
+  var confirmCriteria = window.confirm("Are you satisfied with the criteria you selected?");
+  if (confirmCriteria){
+    return true;
+  } else
+  return false;
+}
+
+
 var generatePassword = function(){
   //ask employee legnth of characters they want
   var passwordLength = window.prompt("Please select length of password.  Must be at least 8 characters and no more than 128 characters.  Please write the numerical value of the characters you want.  Ex: 15.");
@@ -23,67 +149,66 @@ var generatePassword = function(){
   }
 
   // Declare lowercase variable and ask user if they want lowercase characters in password
-  // debugger;
-  var confirmLowerCase = window.confirm("Would you like to include lowercase characters?");
+  debugger;
 
-  if (confirmLowerCase){
+  if (lowercaseOrNo()){
     //if  user wants lowercase, set confirmLowerCase to array
-    window.alert("Password will include lowercase characters");
     var charLC = charLowerCase;
-  } else {
-    // prompt user that there will be no lowercase characters
-    window.alert("Password will not include lowercase characters");
-  }
-  
+  } 
+  debugger;
   // Declare upperercase variable and ask user if they want uppercase characters in password
-  var confirmUpperCase = window.confirm("Would you like to include uppercase characters?")
 
-  if (confirmUpperCase){
+
+  if (uppercaseOrNo()){
     //if  user wants uppercase, set confirmUpperCase to array
-    window.alert("Password will include uppercase characters");
     var charUC = charUpperCase;
-  }else {
-    // prompt user that there will be no uppercase characters
-    window.alert("Password will not include uppercase characters");
   }
 
+  debugger;
   // Declare numeric variable and ask user if they want numeric characters in password
-  var confirmNumeric = window.confirm("Would you like to include numeric characters?")
 
-  if (confirmNumeric){
+  if (numericOrNo()){
     //if  user wants numeric, set confirmNumeric to array
-    window.alert("Password will include numeric characters");
     var charN = charNumeric;
-  }else {
-    // prompt user that there will be no numeric characters
-    window.alert("Password will not include numeric characters");
-  }
+  } 
 
   // Declare special variable and ask user if they want special characters in password
-  var confirmSpecial = window.confirm("Would you like to include special characters? Ex: @, #, $.")
 
-  if (confirmSpecial){
+  debugger;
+
+  if (specialOrNo()){
     //if  user wants special, set confirmNSpecial to array
-    window.alert("Password will include special characters");
     var charS = charSpecial;
-  } else {
-    // prompt user that there will be no special characters
-    window.alert("Password will not include special characters");
-  }
+  } 
+  
+  debugger;
+
+  var confirmLowerCase = lowercaseOrNo();
+  console.log(confirmLowerCase);
+  debugger;
+  var confirmUpperCase = uppercaseOrNo();
+  var confirmNumeric = numericOrNo();
+  var confirmSpecial = specialOrNo();
+  var confirmCriteria = criteriaOrNo();
+
+  console.log(confirmCriteria);
+  debugger;
 
   // ask user to confirm if they are content with the criteria
-  var confirmCriteria = window.confirm("Are you satisfied with the criteria you selected?")
-  if (!confirmCriteria){
+  if (confirmCriteria === false){
     // 
-    window.alert("You are not satisfied with your crtieria.  Please select again");
+    window.alert("You are not satisfied with your crtieria.  Please select again");    
     generatePassword();  
-  } else if (!confirmLowerCase && !confirmUpperCase && !confirmNumeric && !confirmSpecial) {
+        
+  } else if (confirmLowerCase === false && confirmUpperCase === false && confirmNumeric === false && confirmSpecial === false) {
     window.alert("You have not selected any character types.  Please select again");
     generatePassword();
+
   } else {
     // proceed with code
     window.alert("Proceed");
-  }
+    
+  } 
 
   var passw = [];
 
