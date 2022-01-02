@@ -20,8 +20,8 @@ var generatePassword = function(){
   window.alert("You have chosen " + passwordLength + " characters.  Proceed");
   } else {
     // if not prompt user and have them enter another value
-    window.alert("The number of characters you entered is incorrect.  Please enter again");
-    generatePassword();
+    window.alert("The number of characters you entered is incorrect.  Please press 'Generate Password' button again.");
+    return; 
   }
 
   // Declare lowercase variable and ask user if they want lowercase characters in password
@@ -81,8 +81,8 @@ var generatePassword = function(){
   if (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial){
     window.alert("Proceed");
   } else {
-    window.alert("You're password does not meet criteria. Please select again");
-    generatePassword();
+    window.alert("You're password does not meet criteria. Please press 'Generate Password' button again");
+    return;
   }
   // if (confirmCriteria && (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial)){
   //   // 
@@ -93,78 +93,71 @@ var generatePassword = function(){
   //   window.alert("You're password does not meet criteria. Please select again");
   // } 
 
-  var passw = '';
+  var passw = [];
 
-  var verifyChar = function(){
-    
-    for(let i = 0; i < passwordLength; i++){
-      
-      // declare character variable and set it to a random value
-      // debugger;
-      var character = Math.random();
-      // console.log(character);//to be deleted
-
-      if (character > 0.75){
-        characterChoice = confirmLowerCase;
-        if (charLowerCase === characterChoice){
-          x = Math.floor(Math.random()*alphabetLength);
-        } else {
-          // debugger;
-          verifyChar();
-        }
-      } else if (character < 0.75 && character > 0.5){
-        characterChoice = confirmUpperCase;
-        if (charUpperCase === characterChoice){
-          x = Math.floor(Math.random()*alphabetLength);
-        } else {
-          // debugger;
-          verifyChar();
-        }
-      } else if (character < 0.5 && character > 0.25){
-        characterChoice = confirmNumeric;
-        if (charNumeric === characterChoice){
-          x = Math.floor(Math.random()*numberLength);
-        } else {
-          // debugger;
-          verifyChar();
-        }
-      } else{
-        characterChoice = confirmSpecial;
-        if (charSpecial === characterChoice){
-          x = Math.floor(Math.random()*specialLength);
-        }else {
-          // debugger;
-          verifyChar();
-        }
-      }
-        //adds each choice to the array pass
-    debugger;
-    passw = passw + characterChoice[x];
-    console.log(passw);
-    }
-    return passw;
-  }
-
-  verifyChar();
-
-  //joins all the characters of passw to a single string pas
+  for(let i = 0; i < passwordLength; i++){
+      var verifyChar = function(){
+        // debugger;
+        // declare character variable and set it to a random value
+        var character = Math.random();
+        // console.log(character);//to be deleted
   
-  // debugger;
-  window.alert("Your new password is: " + passw);
+        if (character > 0.75){
+          characterChoice = confirmLowerCase;
+          if (charLowerCase === characterChoice){
+            x = Math.floor(Math.random()*alphabetLength);
+          } else {
+            verifyChar();
+          }
+        } else if (character < 0.75 && character > 0.5){
+          characterChoice = confirmUpperCase;
+          if (charUpperCase === characterChoice){
+            x = Math.floor(Math.random()*alphabetLength);
+          } else {
+            verifyChar();
+          }
+        } else if (character < 0.5 && character > 0.25){
+          characterChoice = confirmNumeric;
+          if (charNumeric === characterChoice){
+            x = Math.floor(Math.random()*numberLength);
+          } else {
+            verifyChar();
+          }
+        } else{
+          characterChoice = confirmSpecial;
+          if (charSpecial === characterChoice){
+            x = Math.floor(Math.random()*specialLength);
+          }else {
+            verifyChar();
+          }
+        }
 
+      }
+  
+    // debugger;
+    verifyChar();
+  
+    //adds each choice to the array passw
+    passw.push(characterChoice[x]);
+  
+  }
+  
+    //joins all the characters to a single string
+    var pas = passw.join(''); 
+  
+    window.alert("Your new password is: " + pas);
+  
+  
   var charConfirmation = window.confirm("Are you satisfied with your password?");
   switch (charConfirmation){
     case true: 
       window.alert("Thank you!")
-      console.log(passwordLength);
-      debugger;
-      console.log(passw);
-      debugger;
-      return passw;
+      return pas;
       break;
-      debugger;    
+      // debugger;    
     case false:
-      generatePassword();
+      window.alert("Sorry! Please press 'Generate Password' button again.")
+      return;
       break;
   }
 }
