@@ -5,7 +5,8 @@ var charLowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
 var charUpperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var charNumeric = ["0","1","2","3","4","5","6","7","8","9"];
 var charSpecial = ["@","%","+","/","!","#","$","^","?",":","(",")","}","{","[","]","`","-","_","."];
-var alphabetLength = 26;
+// declaring variables for number of characters in each array
+var alphabetLength = 26; //for both uppercase and lowercase
 var numberLength = 10;
 var specialLength = 20;
 
@@ -13,19 +14,20 @@ var generatePassword = function(){
   //ask employee legnth of characters they want
   var passwordLength = window.prompt("Please select length of password.  Must be at least 8 characters and no more than 128 characters.  Please write the numerical value of the characters you want.  Ex: 15.");
 
+  // Converting string to integer
   passwordLength = parseInt(passwordLength);
 
   //validate answer is between 8 and 128 charcters
   if (passwordLength >= 8 && passwordLength <= 128){
+    //shows user the amount of characters they chose
   window.alert("You have chosen " + passwordLength + " characters.  Proceed");
   } else {
-    // if not prompt user and have them enter another value
+    // if not prompt user and have make them press generate button again
     window.alert("The number of characters you entered is incorrect.  Please press 'Generate Password' button again.");
     return; 
   }
 
   // Declare lowercase variable and ask user if they want lowercase characters in password
-  // debugger;
   var confirmLowerCase = window.confirm("Would you like to include lowercase characters?");
 
   if (confirmLowerCase){
@@ -73,92 +75,102 @@ var generatePassword = function(){
     window.alert("Password will not include special characters");
   }
 
-  // ask user to confirm if they are content with the criteria
-  // var confirmCriteria = window.confirm("Are you satisfied with the criteria you selected?")
-  // console.log(confirmCriteria);
-  console.log(confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial);
-  
+  //confirms that at least one character type has been chosen by verifying that the confirmation equals the array/
   if (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial){
     window.alert("Proceed");
   } else {
-    window.alert("You're password does not meet criteria. Please press 'Generate Password' button again");
+    //if there are no character types than the user will be returned to the generate password button
+    window.alert("You have not chosen any character types. Please press 'Generate Password' button again");
     return;
   }
-  // if (confirmCriteria && (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial)){
-  //   // 
-  //   debugger;
-  //   window.alert("Proceed");
-  // } else  {
-  //   debugger;
-  //   window.alert("You're password does not meet criteria. Please select again");
-  // } 
 
-  var passw = [];
+  // creates empty array for password
+  var formingPassword = [];
 
+  //for loop that goes randomizes password indexes for the length of the password
   for(let i = 0; i < passwordLength; i++){
-      var verifyChar = function(){
-        // debugger;
-        // declare character variable and set it to a random value
+    // declaring verifyChar() function  
+    var verifyChar = function(){
+
+      // declaring the variable character to a random number between 0 and 1
         var character = Math.random();
-        // console.log(character);//to be deleted
-  
+      
+        //if character is greater than 0.75, set the character choice equal to the array declared in the confirmation
         if (character > 0.75){
           characterChoice = confirmLowerCase;
+          //determines if the characterChoice variable is null or the same as the array charLowerCase declared in the beginning
           if (charLowerCase === characterChoice){
+            //multiples math random by number of alphabet and sets it equal to x
             x = Math.floor(Math.random()*alphabetLength);
           } else {
+            //they are not equal so it runs function again to find something that will be equal
             verifyChar();
           }
+          //if character is less than 0.75 and greater than 0.5, set the character choice equal to the array declared in the confirmation
         } else if (character < 0.75 && character > 0.5){
           characterChoice = confirmUpperCase;
+          //determines if the characterChoice variable is null or the same as the array charUpperCase declared in the beginning
           if (charUpperCase === characterChoice){
+            //multiples math random by number of alphabet and sets it equal to x
             x = Math.floor(Math.random()*alphabetLength);
           } else {
+            //they are not equal so it runs function again to find something that will be equal
             verifyChar();
           }
+          //if character is less than 0.5 and greater than 0.25, set the character choice equal to the array declared in the confirmation
         } else if (character < 0.5 && character > 0.25){
           characterChoice = confirmNumeric;
+          //determines if the characterChoice variable is null or the same as the array charNumeric declared in the beginning
           if (charNumeric === characterChoice){
+            //multiples math random by number of alphabet and sets it equal to x
             x = Math.floor(Math.random()*numberLength);
           } else {
+            //they are not equal so it runs function again to find something that will be equal
             verifyChar();
           }
         } else{
+          //if character is less than 0.25, set the character choice equal to the array declared in the confirmation
           characterChoice = confirmSpecial;
+          //determines if the characterChoice variable is null or the same as the array charNumeric declared in the beginning
           if (charSpecial === characterChoice){
+            //multiples math random by number of alphabet and sets it equal to x
             x = Math.floor(Math.random()*specialLength);
           }else {
+            //they are not equal so it runs function again to find something that will be equal
             verifyChar();
           }
         }
 
       }
   
-    // debugger;
+    // calls verifyChar() function
     verifyChar();
   
     //adds each choice to the array passw
-    passw.push(characterChoice[x]);
-  
+    formingPassword.push(characterChoice[x]);
   }
+
+    //joins all the characters to a single string and sets equal to a new variable
+    var newPassword = formingPassword.join(''); 
   
-    //joins all the characters to a single string
-    var pas = passw.join(''); 
+    //alerts user of their new password
+    window.alert("Your new password is: " + newPassword);
   
-    window.alert("Your new password is: " + pas);
-  
-  
-  var charConfirmation = window.confirm("Are you satisfied with your password?");
-  switch (charConfirmation){
-    case true: 
-      window.alert("Thank you!")
-      return pas;
-      break;
-      // debugger;    
-    case false:
-      window.alert("Sorry! Please press 'Generate Password' button again.")
-      return;
-      break;
+    // asks user if they like the new password
+    var charConfirmation = window.confirm("Are you satisfied with your password?");
+    //verifies if charConfirmation is true
+    switch (charConfirmation){
+      //Thanks the user and returns the password to the text box on page
+      case true: 
+        window.alert("Thank you!")
+        return newPassword;
+        break;
+          
+      case false:
+        //Apologies to the user and tells them to press Generate Password button again
+        window.alert("Sorry! Please press 'Generate Password' button again.")
+        return;
+        break;
   }
 }
 
