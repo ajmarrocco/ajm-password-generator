@@ -12,7 +12,7 @@ var specialLength = 20;
 
 var generatePassword = function(){
   //ask employee legnth of characters they want
-  var passwordLength = window.prompt("Please select length of password.  Must be at least 8 characters and no more than 128 characters.  Please write the numerical value of the characters you want.  Ex: 15.");
+  var passwordLength = window.prompt("Please select length of password.  Must be at least 8 characters and no more than 128 characters.  Please write the numerical value of the characters you want.  Ex: 15");
 
   // Converting string to integer
   passwordLength = parseInt(passwordLength);
@@ -22,8 +22,8 @@ var generatePassword = function(){
     //shows user the amount of characters they chose
   window.alert("You have chosen " + passwordLength + " characters.  Proceed");
   } else {
-    // if not prompt user and have make them press generate button again
-    window.alert("The number of characters you entered is incorrect.  Please press 'Generate Password' button again.");
+    // if not prompt user and have make them click generate button again
+    window.alert("The number of characters you entered is incorrect.  Please click 'Generate Password' button again.");
     return; 
   }
 
@@ -80,7 +80,7 @@ var generatePassword = function(){
     window.alert("Proceed");
   } else {
     //if there are no character types than the user will be returned to the generate password button
-    window.alert("You have not chosen any character types. Please press 'Generate Password' button again");
+    window.alert("You have not chosen any character types. Please click 'Generate Password' button again");
     return;
   }
 
@@ -167,8 +167,8 @@ var generatePassword = function(){
         break;
           
       case false:
-        //Apologies to the user and tells them to press Generate Password button again
-        window.alert("Sorry! Please press 'Generate Password' button again.")
+        //Apologies to the user and tells them to click Generate Password button again
+        window.alert("Sorry! Please click 'Generate Password' button again.")
         return;
         break;
   }
