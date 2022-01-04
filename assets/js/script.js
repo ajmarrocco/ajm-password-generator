@@ -13,11 +13,11 @@ var specialLength = 20;
 //function to determine lowercase characters are included
 var lowercaseOrNo = function(){
   //asks user to type if they want lowercase characters or not
-  var promptLowerCase = window.prompt('Would you like lowercase characters? Enter "YES" or "NO" to choose.');
+  var promptLowerCase = window.prompt('Would you like lowercase characters in your password? Type YES or NO to select.');
 
   //if user doesn't type anything
   if (promptLowerCase === "" || promptLowerCase === null){
-    window.alert("You need to provide a valid answer! Please try again.");
+    window.alert("This answer is invalid.  Please try again!");
     // use return to call it again and stop the rest of this function from running
     return lowercaseOrNo();
   }
@@ -41,7 +41,7 @@ var lowercaseOrNo = function(){
     }
     //if the user types something that is not yes, no, or no answer
   } else
-  window.alert("You need to provide a valid answer! Please try again.");
+  window.alert("This answer is invalid.  Please try again!");
   // use return to call it again
   return lowercaseOrNo();
 }
@@ -49,11 +49,11 @@ var lowercaseOrNo = function(){
 //function to determine uppercase characters are included
 var uppercaseOrNo = function(){
   //asks user to type if they want uppercase characters or not
-  var promptUpperCase = window.prompt('Would you like uppercase characters? Enter "YES" or "NO" to choose.');
+  var promptUpperCase = window.prompt('Would you like uppercase characters in your password? Type YES or NO to select.');
 
   //if user doesn't type anything
   if (promptUpperCase === "" || promptUpperCase === null){
-    window.alert("You need to provide a valid answer! Please try again.");
+    window.alert("This answer is invalid.  Please try again!");
     // use return to call it again and stop the rest of this function from running
     return uppercaseOrNo();
   }
@@ -77,7 +77,7 @@ var uppercaseOrNo = function(){
     }
   } else
   //if the user types something that is not yes, no, or no answer
-  window.alert("You need to provide a valid answer! Please try again.");
+  window.alert("This answer is invalid.  Please try again!");
   // use return to call it again
   return uppercaseOrNo();
 }
@@ -85,11 +85,11 @@ var uppercaseOrNo = function(){
 //function to determine numeric characters are included
 var numericOrNo = function(){
   //asks user to type if they want numeric characters or not
-  var promptNumeric = window.prompt('Would you like numeric characters? Enter "YES" or "NO" to choose.');
+  var promptNumeric = window.prompt('Would you like numeric characters in your password? Type YES or NO to select.');
 
   //if user doesn't type anything
   if (promptNumeric === "" || promptNumeric === null){
-    window.alert("You need to provide a valid answer! Please try again.");
+    window.alert("This answer is invalid.  Please try again!");
     // use return to call it again and stop the rest of this function from running
     return numericOrNo();
   }
@@ -113,7 +113,7 @@ var numericOrNo = function(){
     }
     //if the user types something that is not yes, no, or no answer
   } else
-  window.alert("You need to provide a valid answer! Please try again.");
+  window.alert("This answer is invalid.  Please try again!");
   // use return to call it again
   return numericOrNo();
 }
@@ -121,11 +121,11 @@ var numericOrNo = function(){
 //function to determine special characters are included
 var specialOrNo = function(){
   //asks user to type if they want special characters or not
-  var promptSpecial = window.prompt('Would you like special characters? Enter "YES" or "NO" to choose.');
+  var promptSpecial = window.prompt('Would you like special characters in your password? Type YES or NO to select.');
 
   //if user doesn't type anything
   if (promptSpecial === "" || promptSpecial === null){
-    window.alert("You need to provide a valid answer! Please try again.");
+    window.alert("This answer is invalid.  Please try again!");
     // use return to call it again and stop the rest of this function from running
     return specialOrNo();
   }
@@ -149,7 +149,7 @@ var specialOrNo = function(){
     }
     //if the user types something that is not yes, no, or no answer
   } else
-  window.alert("You need to provide a valid answer! Please try again.");
+  window.alert("This answer is invalid.  Please try again!");
   // use return to call it again
   return specialOrNo();
 }
@@ -193,7 +193,7 @@ var generatePassword = function(){
 
   //confirms that at least one character type has been chosen by verifying that the confirmation equals the array/
   if (confirmLowerCase === charLowerCase || confirmUpperCase === charUpperCase || confirmNumeric === charNumeric || confirmSpecial == charSpecial){
-    window.alert("Proceed");
+    window.alert("You have selected at least one character type.  Proceed");
   } else {
     //if there are no character types than the user will be returned to the generate password button
     window.alert("You have not chosen any character types. Please click 'Generate Password' button again");
